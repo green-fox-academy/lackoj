@@ -17,14 +17,3 @@ for (let j: number = 1; j <= 100; j++) {
     console.log(j);
   }
 }
-
-//     if (j % 3 === 0 && j % 5 !== 0) {
-//     console.log("Fizz");
-//   } else if (j % 3 !== 0 && j % 5 === 0) {
-//     console.log("Buzz");
-//   } else if (j % 3 === 0 && j % 5 === 0) {
-//     console.log("FizzBuzz");
-//   } else {
-//     console.log(j);
-//   }
-// }
