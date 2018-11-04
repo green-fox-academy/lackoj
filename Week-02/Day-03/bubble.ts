@@ -18,10 +18,13 @@ console.log(bubble([34, 12, 24, 9, 5]));
 function advancedBubble(arr: number[], value: boolean): number[] {
   if (value === true) {
     arr.sort(function(a, b) {
-      return a - b;
+      return b - a;
     });
     return arr;
   } else {
+    arr.sort(function(a, b) {
+      return a - b;
+    });
     return arr;
   }
 }
