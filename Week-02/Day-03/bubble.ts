@@ -15,7 +15,7 @@ function bubble(array) {
 console.log(bubble([34, 12, 24, 9, 5]));
 // should print [5, 9, 12, 24, 34]
 
-function advancedBubble(arr: number[], value: boolean) {
+function advancedBubble(arr: number[], value: boolean): number[] {
   if (value === true) {
     arr.sort(function(a, b) {
       return a - b;
