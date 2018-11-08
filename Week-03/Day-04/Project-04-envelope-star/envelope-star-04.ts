@@ -5,24 +5,21 @@ const ctx = canvas.getContext("2d");
 
 // DO NOT TOUCH THE CODE ABOVE THIS LINE
 
-const linePlaySize = canvas.height / 2;
+function drawEnvelopeStar(size, lineDistance, color) {
+  for (let repLines = lineDistance; repLines < size; repLines += lineDistance) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
 
-function linePlay(dist) {
-  ctx.beginPath();
+    ctx.moveTo(size, size - repLines);
+    ctx.lineTo(2 * size - repLines, size);
 
-  ctx.strokeStyle = "blue";
-  // random colors: "#" + (Math.random().toString(16) + "000000").substring(2, 8);
+    ctx.lineTo(size, size + repLines);
+    ctx.lineTo(repLines, size);
 
-  ctx.moveTo(linePlaySize, linePlaySize - dist);
-  ctx.lineTo(2 * linePlaySize - dist, linePlaySize);
-
-  ctx.lineTo(linePlaySize, linePlaySize + dist);
-  ctx.lineTo(dist, linePlaySize);
-
-  ctx.closePath();
-  ctx.stroke();
+    ctx.closePath();
+    ctx.stroke();
+  }
 }
+drawEnvelopeStar(200, 5, "pink");
 
-for (let i = 10; i < linePlaySize; i += 10) {
-  linePlay(i);
-}
+// random colors: "#" + (Math.random().toString(16) + "000000").substring(2, 8);
