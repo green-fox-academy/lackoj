@@ -7,16 +7,21 @@ import { fileURLToPath } from "url";
 
 const fs = require("fs");
 
+function readFromFile(fileName: string): string {
+  try {
+    return fs.readFileSync(fileName, "utf-8");
+  } catch (e) {
+    return null;
+  }
+}
+
 function numberOfLines(fileName: string): number {
   let count: number = 0;
-  try {
-    let content = fs.readFileSync(fileName, "utf-8");
-    content.split("\n").forEach(element => {
+  const fileContent: string = readFromFile(fileName);
+  if (fileContent !== null)
+    fileContent.split("\n").forEach(element => {
       count += 1;
     });
-  } catch (error) {
-    return 0;
-  }
   return count;
 }
 
