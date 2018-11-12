@@ -5,9 +5,9 @@
 
 const fs = require("fs");
 
-function writeToFile(fileName: string, data: string): string {
+function writeToFile(fileName: string, data: string): void {
   if (fs.existsSync(fileName)) {
-    return fs.writeFileSync(fileName, data);
+    fs.writeFileSync(fileName, data);
   } else {
     console.log("Unable to write file: my-file.txt");
   }
