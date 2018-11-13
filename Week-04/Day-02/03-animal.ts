@@ -11,13 +11,8 @@ Every animal can play() which increases both by one */
 
 class Animal {
 
-  hunger: number = 50;
-  thirst: number = 50;
-
-  contructor(hunger: number, thirst: number) {
-    this.hunger = hunger;
-    this.thirst = thirst;
-  }
+  hunger = 50;
+  thirst = 50;
 
   eat() {
     this.hunger--;
