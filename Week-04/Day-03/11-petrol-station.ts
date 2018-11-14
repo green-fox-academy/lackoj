@@ -1,3 +1,6 @@
+"use strict"
+export { };
+
 /* Create a Station and a Car classes
 Station
 gasAmount
