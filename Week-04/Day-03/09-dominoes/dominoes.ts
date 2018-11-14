@@ -24,7 +24,7 @@ let dominoes = initializeDominoes();
 
 // print(dominoes);
 
-function orderDominoes(array: Domino[]): Domino[] {
+function orderDominoes(dominoes: Domino[]): Domino[] {
   let dominoes2 = [];
   dominoes2.push(dominoes[0])
   for (let j = 0; j < dominoes.length; j++) {
