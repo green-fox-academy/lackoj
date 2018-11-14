@@ -9,10 +9,15 @@ Every animal can eat() which decreases their hunger by one
 Every animal can drink() which decreases their thirst by one
 Every animal can play() which increases both by one */
 
-class Animal {
+export class Animal {
 
   hunger = 50;
   thirst = 50;
+  animalType: string;
+
+  constructor(animalType: string) {
+    this.animalType = animalType;
+  }
 
   eat() {
     this.hunger--;
@@ -28,14 +33,14 @@ class Animal {
   }
 }
 
-let Tigre = new Animal()
-console.log(Tigre);
+// let Tigre = new Animal()
+// console.log(Tigre);
 
-Tigre.drink();
-console.log(Tigre);
+// Tigre.drink();
+// console.log(Tigre);
 
-Tigre.play();
-console.log(Tigre);
+// Tigre.play();
+// console.log(Tigre);
 
 
 
