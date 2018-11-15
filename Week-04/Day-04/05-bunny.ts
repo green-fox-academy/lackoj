@@ -5,11 +5,11 @@ export { };
 // We want to compute the total number of ears across all the bunnies recursively (without loops or multiplication).
 
 
-function addUntilN(n: number): number {
+function countBunnyEars(n: number): number {
   if (n > 1) {
-    return 2 + addUntilN(n - 1);
+    return 2 + countBunnyEars(n - 1);
   }
   return 2;
 }
 
-console.log(addUntilN(20));
+console.log(countBunnyEars(20));
