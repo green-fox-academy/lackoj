@@ -34,3 +34,4 @@ function createEnvelopeStar() {
 }
 
 createEnvelopeStar();
+export = createEnvelopeStar;

@@ -22,4 +22,4 @@ function drawEnvelopeStar(size, lineDistance, color) {
 }
 drawEnvelopeStar(200, 5, "pink");
 
-// random colors: "#" + (Math.random().toString(16) + "000000").substring(2, 8);
+export = drawEnvelopeStar;
