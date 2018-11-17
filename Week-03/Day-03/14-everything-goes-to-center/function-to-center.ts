@@ -18,34 +18,16 @@ function lines(x, y) {
   ctx.stroke();
 }
 
-for (let i = 0; i <= canvas.width; i = i + 20) {
-  for (let j = 0; j <= canvas.height; j = j + 20) {
-    if (i === 0 || j === 0 || j === canvas.height || i === canvas.width) {
-      lines(i, j);
+function centeredLines(): void {
+  for (let i = 0; i <= canvas.width; i = i + 20) {
+    for (let j = 0; j <= canvas.height; j = j + 20) {
+      if (i === 0 || j === 0 || j === canvas.height || i === canvas.width) {
+        lines(i, j);
+      }
     }
   }
 }
 
-// for (let i = 0; i <= canvas.width; i = i + 20) {
-//   ctx.strokeStyle = "green";
-//   ctx.beginPath();
-//   ctx.moveTo(i, 400); //
-//   ctx.lineTo(300, 200);
-//   ctx.stroke();
-// }
+centeredLines();
 
-// for (let i = 0; i <= canvas.height; i = i + 20) {
-//   ctx.strokeStyle = "green";
-//   ctx.beginPath();
-//   ctx.moveTo(600, i); //
-//   ctx.lineTo(300, 200);
-//   ctx.stroke();
-// }
-
-// for (let i = 0; i <= canvas.height; i = i + 20) {
-//   ctx.strokeStyle = "green";
-//   ctx.beginPath();
-//   ctx.moveTo(0, i); //
-//   ctx.lineTo(300, 200);
-//   ctx.stroke();
-// }
+export = centeredLines; lines;

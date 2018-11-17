@@ -11,7 +11,7 @@ const ctx = canvas.getContext("2d");
 // Draw 3 squares with that function.
 // Avoid code duplication.
 
-function drawSquare(x, y) {
+function drawSquare(x: number, y: number): void {
   ctx.fillStyle = "pink";
   ctx.fillRect(x, y, 50, 50);
 }
@@ -19,3 +19,5 @@ function drawSquare(x, y) {
 for (let i = 0; i < 3; i++) {
   drawSquare(20 + i * 100, 20);
 }
+
+export = drawSquare;

@@ -21,3 +21,5 @@ function drawHorizontalLine(x, y) {
 for (let i = 0; i < 3; i++) {
   drawHorizontalLine(100 + i * 20, 100 + i * 20);
 }
+
+export = drawHorizontalLine;
