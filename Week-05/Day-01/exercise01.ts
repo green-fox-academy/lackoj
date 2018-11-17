@@ -6,7 +6,7 @@ class Person {
   age: number; //the age of the person (whole number)
   gender: string; //the gender of the person (male / female)
 
-  Person(name: string = "Jane Doe", age: number = 30, gender: "female") { //Person(): sets name to Jane Doe, age to 30, gender to female
+  constructor(name: string = "Jane Doe", age: number = 30, gender: string = "female") { //Person(): sets name to Jane Doe, age to 30, gender to female
     this.name = name;
     this.age = age;
     this.gender = gender;
@@ -30,7 +30,7 @@ class Student {
   previousOrganization: string;
   skippedDays: number;
 
-  student(name: string = "Jane Doe", age: number = 30, gender: string = "female", previousOrganization: string = "The School of Life") {
+  constructor(name: string = "Jane Doe", age: number = 30, gender: string = "female", previousOrganization: string = "The School of Life") {
     this.name = name;
     this.age = age;
     this.gender = gender;
@@ -48,7 +48,7 @@ class Student {
   }
 
   getGoal() {
-    console.log("Be a junior software developer.");
+    console.log("My goal is: Be a junior software developer.");
   }
 
 }
@@ -60,7 +60,7 @@ class Mentor {
   gender: string;
   level: string; //the level of the mentor (junior / intermediate / senior)
 
-  mentor(name: string = "Jane Doe", age: number = 30, gender: string = "female", level: string = "intermediate") {
+  constructor(name: string = "Jane Doe", age: number = 30, gender: string = "female", level: string = "intermediate") {
     this.name = name;
     this.age = age;
     this.gender = gender;
@@ -72,7 +72,7 @@ class Mentor {
   }
 
   getGoal() {
-    console.log("Educate brilliant junior software developers.");
+    console.log("my goal is: Educate brilliant junior software developers.");
   }
 }
 
@@ -84,7 +84,8 @@ class Sponsor {
   company: string; //name of the company
   hiredStudents: number; // number of students hired
 
-  sponsor(name: string = "Jane Doe", age: number = 30, gender: string = "female", company: string = "Google") {
+  constructor(name: string = "Jane Doe", age: number = 30,
+    gender: string = "female", company: string = "Google") {
     this.name = name;
     this.age = age;
     this.gender = gender;
@@ -98,21 +99,47 @@ class Sponsor {
   }
 
   getGoal() { //prints out "My goal is: Live for the moment!"
-    console.log("Hire brilliant junior software developers.");
+    console.log("My goal is: Hire brilliant junior software developers.");
   }
 
   hire() { //increase hiredStudents by 1
     return this.hiredStudents++;
   }
-
-
-
 }
 
 
 console.log("");
 
-/*The Sponsor class has the following constructors:
+let people = [];
+let mark = new Person('Mark', 46, 'male');
+people.push(mark);
+let jane = new Person();
+people.push(jane);
+let john = new Student('John Doe', 20, 'male', 'BME');
+people.push(john);
+let student = new Student();
+people.push(student);
+let gandhi = new Mentor('Gandhi', 148, 'male', 'senior');
+people.push(gandhi);
+let mentor = new Mentor();
+people.push(mentor);
+let sponsor = new Sponsor();
+people.push(sponsor);
+let elon = new Sponsor('Elon Musk', 46, 'male', 'SpaceX');
+people.push(elon);
 
-Sponsor(name, age, gender, company): beside the given parameters, it sets hiredStudents to 0
-Sponsor(): sets name to Jane Doe, age to 30, gender to female, company to Google and hiredStudents to 0 */
+
+student.skipDays(3);
+
+for (let i = 0; i < 3; i++) {
+  elon.hire();
+}
+
+for (let i = 0; i < 5; i++) {
+  sponsor.hire();
+}
+
+for (let person of people) {
+  person.introduce();
+  person.getGoal();
+}
