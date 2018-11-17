@@ -3,11 +3,8 @@
 const canvas = document.querySelector(".main-canvas") as HTMLCanvasElement;
 const ctx = canvas.getContext("2d");
 
-// DO NOT TOUCH THE CODE ABOVE THIS LINE
 
-'use strict';
-
-function height(side) {
+function height(side: number): number {
   return (side * Math.sqrt(3)) / 2;
 }
 
