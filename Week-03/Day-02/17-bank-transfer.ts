@@ -1,4 +1,5 @@
 "use strict";
+export { };
 
 const accounts: any[] = [
   { clientName: "Igor", accountNumber: 11234543, balance: 203004099.2 },
@@ -33,7 +34,7 @@ function transferAmount(
   accNumFrom: number,
   accNumTo: number,
   amount: number
-) {
+): any {
   if (
     obj.filter(
       e => e.accountNumber === accNumFrom || e.accountNumber === accNumTo

@@ -1,5 +1,5 @@
 "use strict";
-export {};
+export { };
 
 // Create a function that can reverse a string, which is passed as the parameter
 // Use it on this reversed string to check it!
@@ -7,7 +7,7 @@ export {};
 let reversed: string =
   ".eslaf eb t'ndluow ecnetnes siht ,dehctiws erew eslaf dna eurt fo sgninaem eht fI";
 
-function reverse(text: string) {
+function reverse(text: string): string {
   return text
     .split("")
     .reverse()

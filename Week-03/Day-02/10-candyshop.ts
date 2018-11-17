@@ -8,7 +8,7 @@ let shopItems: any[] = ["Cupcake", 2, "Brownie", false];
 // Create a function called sweets() which takes the list as a parameter.
 // Expected output: "Cupcake", "Croissant", "Brownie", "Ice cream"
 
-function sweets(array) {
+function sweets(array: any[]): string[] {
   array.map(e => {
     if (e === 2) {
       array[array.indexOf(e)] = "Croissant";

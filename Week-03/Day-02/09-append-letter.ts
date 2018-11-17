@@ -1,13 +1,13 @@
 "use strict";
-export {};
+export { };
 
 // Create a function called "appendA()" that adds "a" to every string in the far list.
 // The parameter should be a list.
 
 let far: string[] = ["bo", "anacond", "koal", "pand", "zebr"];
 
-function appendA(arr: string[]) {
-  arr.forEach(function(element, i, arr) {
+function appendA(arr: string[]): string[] {
+  arr.forEach(function (element, i, arr) {
     arr[i] = element + "a";
   });
   return arr;

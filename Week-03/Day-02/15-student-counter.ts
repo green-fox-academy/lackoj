@@ -1,5 +1,5 @@
 "use strict";
-export {};
+export { };
 
 const students: any[] = [
   { name: "Theodor", age: 3, candies: 2 },
@@ -12,22 +12,20 @@ const students: any[] = [
 
 // create a function that takes a list of students and logs:
 // - how many candies are owned by students
-
-// create a function that takes a list of students and logs:
-// - Sum of the age of people who have lass than 5 candies
-
 function sumCandies(list: any): number {
   let sumCandy: number = 0;
-  list.forEach(function(list) {
+  list.forEach(function (list) {
     sumCandy += list.candies;
   });
   return sumCandy;
 }
 console.log(sumCandies(students));
 
-function sumAges(list: any) {
+// create a function that takes a list of students and logs:
+// - Sum of the age of people who have lass than 5 candies
+function sumAges(list: any): number {
   let sumAge: number = 0;
-  list.forEach(function(list) {
+  list.forEach(function (list) {
     if (list.candies < 5) {
       sumAge += list.age;
     }

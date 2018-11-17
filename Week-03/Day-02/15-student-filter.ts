@@ -11,7 +11,7 @@ const students: any[] = [
 // create a function that takes a list of students and logs:
 // - Who has got more candies than 4 candies
 
-function whoHasMoreCandiesThanFour(array: string[]) {
+function whoHasMoreCandiesThanFour(array: string[]): any {
   let studentsWithMoreThanTwoCandies: string[] = [];
   for (let j = 0; j < array.length; j++) {
     for (let i = 0; i < students.length; i++) {
@@ -22,7 +22,7 @@ function whoHasMoreCandiesThanFour(array: string[]) {
   }
   console.log(
     "These students have more than two Candies: " +
-      studentsWithMoreThanTwoCandies
+    studentsWithMoreThanTwoCandies
   );
 }
 whoHasMoreCandiesThanFour(["Mark", "Paul", "Clark", "Pierce", "Sean", "Béla"]);
