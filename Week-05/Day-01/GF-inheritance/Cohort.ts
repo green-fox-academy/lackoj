@@ -2,11 +2,18 @@
 import { Student } from './Student';
 import { Mentor } from './Mentor';
 
-class Cohort {
+export class Cohort {
 
   name: string;  //the name of the cohort
-  students: Student[] = []; //a list of Students
-  mentors: Mentor[] = []; //a list of Mentors
+  students: Student[]; //a list of Students
+  mentors: Mentor[]; //a list of Mentors
+
+  constructor(name) {
+    this.name = name;
+    this.students = [];
+    this.mentors = [];
+
+  }
 
   addStudent(student: Student) {// adds the given Student to students list
     this.students.push(student);
