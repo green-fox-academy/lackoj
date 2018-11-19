@@ -22,23 +22,13 @@ function writeToFile(fileName: string, data: string): void {
 function removeDoubleChars() {
   let fileContent = readFromFile("08-doubled.txt");
   let arrayOfLines = fileContent.split("\n");
-  let twoDimArrayOfLines = arrayOfLines.map(e => e.split(""));
 
-  let temp = twoDimArrayOfLines.map(e => {
-    let result: string[] = [];
-
-    for (let i = 0; i < e.length; i++) {
-      if (e[i] === e[i + 1]) {
-        result.push(e[i]);
-      }
-    }
-    console.log(result);
-    return result;
+  let result = arrayOfLines.map(lines => {
+    let arrayOfChars = lines.split("");
+    return arrayOfChars.filter((char, index) => index % 2 === 0).join("");
   })
 
-  let result = temp.map(e => e.join("")).join("\n");
-
-  return writeToFile("08-doubled-02.txt", result);
+  return writeToFile("08-doubled-02.txt", result.join("\n"));
 }
-removeDoubleChars();
 
+removeDoubleChars();
