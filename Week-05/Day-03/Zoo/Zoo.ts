@@ -1,3 +1,4 @@
+import { Flyable } from '../Flyable/flyable';
 "use strict";
 
 abstract class Animal {
@@ -8,9 +9,19 @@ abstract class Animal {
   abstract breed();
 }
 
-export class Bird extends Animal {
+export class Bird extends Animal implements Flyable {
   breed() {
     return "layning eggs"
+  };
+
+  land() {
+    console.log(`The ${this.name} has landed on a tree`)
+  };
+  takeOf() {
+    console.log("In the air.")
+  };
+  fly() {
+    console.log("Fyling.")
   };
 }
 
