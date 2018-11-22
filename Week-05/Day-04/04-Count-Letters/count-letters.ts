@@ -8,8 +8,8 @@ function findOccurences(str, char_to_count) {
   return str.split(char_to_count).length - 1;
 }
 
-function createDictionary(text: string) {
-  let textToArray = text.split("")
+export function createDictionary(text: string) {
+  let textToArray = text.toLowerCase().split("").sort()
   let result = {};
 
   for (let i = 0; i < textToArray.length; i++) {
@@ -19,8 +19,7 @@ function createDictionary(text: string) {
   return result;
 };
 
-console.log(createDictionary("alma"));
-console.log(createDictionary("kiscica"));
-console.log(createDictionary("kutya"));
+
+
 
 
