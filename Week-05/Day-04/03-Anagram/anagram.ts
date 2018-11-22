@@ -5,21 +5,12 @@
 export function checkIfAnagram(textA: string, textB: string): boolean {
 
   function transFormTextAndOrderLetters(text: string): string {
-    let result: string[] = text.toLowerCase().split("").sort((a, b) => {
-      if (a < b) return -1;
-      else if (a > b) return 1;
-      return 0;
-    });
-
-    return result.join("");
+    return text.toLowerCase().split("").sort().join("");
   };
 
   textA = transFormTextAndOrderLetters(textA);
   textB = transFormTextAndOrderLetters(textB);
 
-  if (textA === textB) {
-    return true;
-  }
+  return textA === textB;
 
-  return false;
 }
