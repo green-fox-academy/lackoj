@@ -14,7 +14,7 @@ test("testing count-letters", (t) => {
   let expected2 = { a: 3, b: 3, c: 3 };
   t.deepEqual(actual2, expected2, "lowercase letters - unodered");
 
-  let actual3 = createDictionary("aabbccABC"); //this has failed on the test, needs fixing
+  let actual3 = createDictionary("aabbccABC");
   let expected3 = { a: 3, b: 3, c: 3 };
   t.deepEqual(actual3, expected3, "all variations");
 

@@ -4,17 +4,15 @@
 // with all letters in the string as keys, and numbers as values that shows how many occurrences there are.
 // Create a test for that.
 
-function findOccurences(str, char_to_count) {
-  return str.split(char_to_count).length - 1;
-}
-
 export function createDictionary(text: string) {
-  let textToArray = text.toLowerCase().split("").sort()
+  let textArr = text.toLowerCase().split("").sort()
   let result = {};
 
-  for (let i = 0; i < textToArray.length; i++) {
-    let charCount = findOccurences(text, textToArray[i]);
-    result[textToArray[i]] = charCount;
+  for (let i = 0; i < textArr.length; i++) {
+    let charCount =
+      text.toLocaleLowerCase().split(textArr[i]).length - 1;
+
+    result[textArr[i]] = charCount;
   }
   return result;
 };
