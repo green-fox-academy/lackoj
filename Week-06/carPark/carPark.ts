@@ -13,13 +13,19 @@ getPenalty() method which returns a new array of car's who hasn't got a parking 
 */
 
 export class CarPark {
-  private carPark: Car[] = [];
+  carPark: Car[] = [];
 
   constructor() {
   }
 
+  getCarPark() {
+    return this.carPark;
+  }
+
   addCar(car: Car): void {
-    this.carPark.push(car);
+    if (car) { //car is not undifined nor null
+      this.carPark.push(car);
+    }
   }
 
   addCarToFile(car: Car, parkingTicket: number): void {
