@@ -1,0 +1,34 @@
+html,body{
+  padding:0;
+  margin:0;
+}
+
+ .container{
+  display:flex;
+  width:400px;
+  height: 600px;
+  background-color: #ffffff;
+  flex-flow: column;
+}
+
+ .item{
+  min-width:50px;
+}
+
+ .green{
+  background-color: rgb(40, 193, 26);
+  flex-grow: 1;
+  order: 0;
+}
+
+.yellow{
+  background-color: rgb(255, 196, 0);
+  flex-grow: 2;
+  order: 2;
+}
+
+.purple{
+  background-color: rgb(148, 72, 148);
+  flex-grow: 1;
+  order: 1;
+} 
