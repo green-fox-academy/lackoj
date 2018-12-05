@@ -1,0 +1,22 @@
+html,body{
+  padding:0;
+  margin:0;
+}
+
+ .container{
+  height: 300px;
+  background-color: rgb(255, 196, 0);
+  display:flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  list-style:none;
+  flex-grow: 1;
+  padding: 0;
+}
+
+ .item{
+  height: 100px;
+  width: 100px;
+  margin-left: 5px;
+  background-color: rgb(148, 72, 148);
+}
