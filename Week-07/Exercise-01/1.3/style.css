@@ -1,0 +1,31 @@
+html,body{
+  padding:0;
+  margin:0;
+}
+
+ .container{
+  display:flex;
+  width:100%;
+  background-color: #ffffff;
+  flex-direction: row-reverse;
+}
+
+ .item{
+  min-width:100px;
+  min-height:100px;
+}
+
+ .green{
+  background-color: rgb(40, 193, 26);
+  flex-grow: 1;
+}
+
+.yellow{
+  background-color: rgb(255, 196, 0);
+  flex-grow: 2;
+}
+
+.purple{
+  background-color: rgb(148, 72, 148);
+  flex-grow: 1;
+} 
