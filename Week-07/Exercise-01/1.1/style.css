@@ -1,0 +1,24 @@
+html,body{
+  padding:0;
+  margin:0;
+}
+ .container{
+  display:flex;
+  background-color: #ffffff;
+}
+ .item{
+  width:100px;
+  height:100px;
+}
+
+ .green{
+  background-color: rgb(40, 193, 26);
+}
+
+ .yellow{
+  background-color: rgb(255, 196, 0);
+}
+
+ .purple{
+  background-color: rgb(148, 72, 148);
+} 
