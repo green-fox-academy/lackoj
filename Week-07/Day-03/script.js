@@ -1,3 +1,5 @@
+"use strict";
+
 const pictures = [
   { 'source': 'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
   { 'source': 'https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
@@ -14,15 +16,13 @@ const subContainer = document.querySelector("#subContainer");
 const gallery = document.querySelector("#gallery");
 const imageContainer = document.querySelector("#imageContainer");
 
-function swapImages(indexOfPic) {
-  //set main image
-  const newMainImage = document.createElement("img");
-  newMainImage.setAttribute("src", pictures[indexOfPic].source);
-  newMainImage.id = "mainImage";
-  gallery.appendChild(newMainImage);
+const button = document.querySelectorAll("button");
+const buttonLeft = document.querySelector("#leftButton");
+const buttonRight = document.querySelector("#rightButton");
 
+// let tempArray = pictures.filter((e, index) => index !== indexOfPic);
+function setSamallImages() {
   //set small images
-  // let tempArray = pictures.filter((e, index) => index !== indexOfPic);
   for (let i = 0; i < pictures.length; i++) {
     const newSmallImage = document.createElement("img");
     newSmallImage.setAttribute("src", pictures[i].source);
@@ -31,5 +31,41 @@ function swapImages(indexOfPic) {
   }
 }
 
-swapImages(1);
+function setMainImage(indexOfPic) {
+  const newMainImage = document.createElement("img");
+  newMainImage.setAttribute("src", pictures[indexOfPic].source);
+  newMainImage.id = "mainImage";
+  gallery.appendChild(newMainImage);
+}
+
+setSamallImages();
+setMainImage(0);
+
+function replaceMainImage(indexOfPic) {
+  let toReplace = document.querySelector("#mainImage")
+  const newMainImage = document.createElement("img");
+  newMainImage.setAttribute("src", pictures[indexOfPic].source);
+  newMainImage.id = "mainImage";
+  gallery.replaceChild(newMainImage, toReplace);
+}
+
+let actualImage = document.querySelector("#mainImage");
+
+let count = function () {
+  for (let i = 0; i < pictures.length; i++) {
+    if (pictures[i].source === actualImage.getAttribute("src")) {
+      return i;
+    }
+  }
+}
+
+button.onclick = () => {
+  replaceMainImage(count + 1);
+  // count++;
+}
+
+// buttonRight.onclick = () => {
+//   replaceMainImage(count);
+//   count--;
+// }
 
