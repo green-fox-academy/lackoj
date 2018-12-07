@@ -9,24 +9,27 @@ const pictures = [
   { 'source': 'https://images.pexels.com/photos/7919/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500' }
 ];
 
-
 const mainContainer = document.querySelector("#mainContainer");
 const subContainer = document.querySelector("#subContainer");
 const gallery = document.querySelector("#gallery");
 const imageContainer = document.querySelector("#imageContainer");
 
-//set main image
-const newMainImage = document.createElement("img");
-newMainImage.setAttribute("src", pictures[0].source);
-newMainImage.id = "mainImage";
-gallery.appendChild(newMainImage);
+function swapImages(indexOfPic) {
+  //set main image
+  const newMainImage = document.createElement("img");
+  newMainImage.setAttribute("src", pictures[indexOfPic].source);
+  newMainImage.id = "mainImage";
+  gallery.appendChild(newMainImage);
 
-//set small images
-for (let i = 1; i < pictures.length; i++) {
-  const newSmallImage = document.createElement("img");
-  newSmallImage.setAttribute("src", pictures[i].source);
-  newSmallImage.className = "smallImage";
-  imageContainer.appendChild(newSmallImage);
+  //set small images
+  // let tempArray = pictures.filter((e, index) => index !== indexOfPic);
+  for (let i = 0; i < pictures.length; i++) {
+    const newSmallImage = document.createElement("img");
+    newSmallImage.setAttribute("src", pictures[i].source);
+    newSmallImage.className = "smallImage";
+    imageContainer.appendChild(newSmallImage);
+  }
 }
 
+swapImages(1);
 
