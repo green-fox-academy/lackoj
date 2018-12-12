@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./starwars.css">
+  <title>Apollo</title>
+</head>
+
+<body>
+  <form action="https://swapi.co/api/people/1/" method="get">
+    <label for="search">Enter character name</label>
+    <input class="input" type="text" name="search" placeholder="Search..">
+    <input class="submit" type="submit" name="submit" value="Submit">
+  </form>
+  <ul class="result-list">
+  </ul>
+  <ul class="film-list">
+  </ul>
+  <script src="./starwars.js"></script>
+</body>
+
+</html>
