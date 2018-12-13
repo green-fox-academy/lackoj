@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Radio bottons</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <form action="/" method="post">
+
+    <div class="animal-container">
+
+      <h2>What is your favourite pet?</h2>
+      <label for="dog">Dog</label>
+      <input type="radio" id="dog" name="animals">
+
+      <label for="cat">Cat</label>
+      <input type="radio" id="cat" name="animals">
+
+      <label for="fish">Viktor the goldfish</label>
+      <input type="radio" id="fish" name="animals">
+
+      <button disabled="disabled" id="love-cats-btn">I love cats</button>
+    </div>
+
+    <div class="yesno-container">
+
+      <h2>Do you want to sign up for cat facts?</h2>
+      <label for="yes-radio">Yes</label>
+      <input type="radio" id="yes-radio" name="yesno">
+
+      <label for="no-radio">No</label>
+      <input type="radio" id="no-radio" name="yesno">
+
+      <button disabled="disabled" id="sign-up-btn">Sign up</button>
+    </div>
+
+  </form>
+  <script src="./script.js"></script>
+</body>
+
+</html>
