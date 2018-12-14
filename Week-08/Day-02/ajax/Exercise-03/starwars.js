@@ -12,14 +12,15 @@
 
 const submit = document.querySelector(".submit");
 const input = document.querySelector(".input");
-const swapiUrl = "https://swapi.co/api";
 const resultList = document.querySelector(".result-list");
 const filmList = document.querySelector(".film-list");
+
+const swapiUrl = "https://swapi.co/api";
 let peopleList = [];
 
-const sendHTTPRequest = (method, url, callback) => {
+const sendHTTPRequest = (url, callback) => {
   const xhr = new XMLHttpRequest();
-  xhr.open(method, url);
+  xhr.open("GET", url);
   xhr.onload = () => {
     if (xhr.status === 200) {
       callback(JSON.parse(xhr.responseText));
@@ -31,11 +32,11 @@ const sendHTTPRequest = (method, url, callback) => {
 submit.addEventListener("click", (event) => {
   event.preventDefault();
   const searchUrl = `${swapiUrl}/people/?search=${input.value}`;
-  sendHTTPRequest("GET", searchUrl, (response) => {
+  sendHTTPRequest(searchUrl, (response) => {
     resultList.innerHTML = "";
     filmList.innerHTML = "";
     peopleList = response.results;
-    response.results.forEach((result) => {
+    peopleList.forEach((result) => {
       let li = document.createElement("li");
       li.innerText = result.name;
       resultList.appendChild(li);
@@ -47,7 +48,7 @@ resultList.addEventListener("click", (event) => {
   if (event.target.tagName === "LI") {
     let [selectedPersonData] = peopleList.filter((person) => person.name === event.target.innerText);
     selectedPersonData.films.forEach(filmUrl => {
-      sendHTTPRequest("GET", filmUrl, (response) => {
+      sendHTTPRequest(filmUrl, (response) => {
         let content = `${response.title} (${response.created})`;
         let li = document.createElement("li");
         li.innerText = content;
