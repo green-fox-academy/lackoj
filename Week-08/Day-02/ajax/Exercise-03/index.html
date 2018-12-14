@@ -11,17 +11,25 @@
 
 <body>
   <div class="main-container">
+
     <form action="https://swapi.co/api/people/1/" method="get">
       <label for="search"></label>
       <input class="input" type="text" name="search" placeholder="Enter character name...">
       <input class="submit" type="submit" name="submit" value="Submit">
     </form>
-    <h3>Search result:</h3>
-    <ul class="result-list">
-    </ul>
-    <h3>Films:</h3>
-    <ul class="film-list">
-    </ul>
+
+    <div class="result-container">
+      <h3>Search result:</h3>
+      <ul class="result-list">
+      </ul>
+    </div>
+
+    <div class="film-container">
+      <h3>Films:</h3>
+      <ul class="film-list">
+      </ul>
+    </div>
+
     <script src="./starwars.js"></script>
   </div>
 </body>
