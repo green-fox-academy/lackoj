@@ -2,8 +2,10 @@
 const express = require("express");
 const app = express();
 const path = require('path');
+const bp = require('body-parser');
 const PORT = 8080;
 
+app.use(bp());
 app.use('/assets', express.static('assets'));
 
 app.get('/', (req, res) => {
@@ -41,6 +43,42 @@ app.get('/greeter', (req, res) => {
     });
   }
 })
+
+app.get('/appenda/:word', (req, res) => {
+  const word = req.params.word;
+  if (word) {
+    res.json({ 'appended': word + "a" });
+  } else {
+    res.status(404).send();
+  }
+});
+
+const factorio = (par) => {
+  let fac = 1;
+  for (let i = par; i > 0; i--) {
+    fac *= i;
+  }
+  return fac;
+}
+
+const sum = (par) => {
+  let summ = 0;
+  for (let i = 0; i <= par; i++) {
+    summ += i;
+  }
+  return summ;
+}
+
+app.post('/dountil/:action', (req, res) => {
+  const { action } = req.params;
+  if (action == 'sum') {
+    res.json({ 'result': sum(req.body.until) });
+  } if (action == 'factor') {
+    res.json({ 'result': factorio(req.body.until) });
+  } else {
+    res.json('error: please provide input');
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on PORT ${PORT}`);
