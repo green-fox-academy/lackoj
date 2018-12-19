@@ -2,10 +2,11 @@
 const express = require("express");
 const app = express();
 const path = require('path');
-const bp = require('body-parser');
+// const bp = require('body-parser'); -OLD version
 const PORT = 8080;
 
-app.use(bp());
+
+app.use(express.json());
 app.use('/assets', express.static('assets'));
 
 app.get('/', (req, res) => {
