@@ -26,8 +26,13 @@ app.get('/', (req, res) => {
 app.get('/author', (req, res) => {
   const sql = 'SELECT * FROM author'
   mySqlConnection.query(sql, (error, data) => {
+    if (error) {
+      console.log(error.message);
+      res.status(500).json({ error: 'internal server issue' });
+      return;
+    }
     res.json(data);
-  })
-})
+  });
+});
 
 app.listen(PORT, () => console.log(`Server is listening on: ${PORT}`));
