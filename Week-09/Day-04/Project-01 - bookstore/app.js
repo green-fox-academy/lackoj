@@ -1,6 +1,7 @@
 "use strict";
 
 require('dotenv').config();
+
 const mysql = require('mysql');
 const express = require('express');
 const app = express();
@@ -9,7 +10,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-const conn = mysql.createConnection({
+const mySqlConnection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   database: process.env.DB_DATABASE,
@@ -22,12 +23,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-conn.connect(err => {
-  if (err) {
-    console.error(err.message);
-    return;
-  }
-  console.log('Connected to database', '\n');
-});
+app.get('/author', (req, res) => {
+  const sql = 'SELECT * FROM author'
+  mySqlConnection.query(sql, (error, data) => {
+    res.json(data);
+  })
+})
 
 app.listen(PORT, () => console.log(`Server is listening on: ${PORT}`));
