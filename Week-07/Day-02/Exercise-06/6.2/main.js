@@ -72,6 +72,7 @@ const deleteItem = () => {
   let index = checkSelected();
   let childWithIndex = toBuyList.childNodes[index];
   toBuyList.removeChild(childWithIndex);
+  toBuyList.childNodes[0].className = 'selected';
 };
 
 buttonList.addEventListener('click', (e) => {
