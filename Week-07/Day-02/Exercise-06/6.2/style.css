@@ -22,3 +22,7 @@ li{
   list-style-type: none;
   text-align: center;
 }
+
+.selected {
+  background-color: grey;
+}
