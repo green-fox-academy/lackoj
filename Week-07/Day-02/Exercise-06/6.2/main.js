@@ -8,3 +8,39 @@
 //       - If ">" is clicked the selected item should be moved to the right side and the first item on the left side should be selected
 //   5, Check all the edge cases, no error should be printed to the console
 
+'use strict';
+
+let mainContainer = document.querySelector('.main');
+for (let i = 0; i < 3; i++) {
+  let ul = document.createElement('ul');
+  mainContainer.appendChild(ul);
+}
+
+const toBuy = ['bread', 'milk', 'orange', 'tomato'];
+const myButtons = ['up', '>', 'X', 'down'];
+const [toBuyList, buttonList, doneList] = document.querySelectorAll('ul');
+
+const createList = (arrayToLi, ul) => {
+  arrayToLi.forEach(e => {
+    let li = document.createElement('li');
+    li.innerText = e;
+    ul.appendChild(li);
+  });
+};
+
+createList(toBuy, toBuyList);
+createList(myButtons, buttonList);
+
+const [up, right, deleted, down] = buttonList.querySelectorAll('li');
+
+buttonList.addEventListener('click', () => {
+  if (up) {
+    //move up
+  } else if (right) {
+    //move right
+  } else if (deleted) {
+    //to delete
+  } else if (down) {
+    //move down
+  };
+})

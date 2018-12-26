@@ -1,0 +1,24 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+}
+
+.main {
+  width: 360px;
+  display: flex;
+  align-content: center;
+  margin: 200px auto 0 auto;
+}
+
+.main ul{
+ height: 100px;
+ width: 100px;
+ border: black 1px solid;
+ margin: 10px;
+}
+
+li{
+  list-style-type: none;
+  text-align: center;
+}
