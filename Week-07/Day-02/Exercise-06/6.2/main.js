@@ -32,15 +32,56 @@ createList(toBuy, toBuyList);
 createList(myButtons, buttonList);
 
 const [up, right, deleted, down] = buttonList.querySelectorAll('li');
+toBuyList.childNodes[0].className = 'selected';
 
-buttonList.addEventListener('click', () => {
-  if (up) {
-    //move up
-  } else if (right) {
-    //move right
-  } else if (deleted) {
-    //to delete
-  } else if (down) {
-    //move down
+let indexOfSelection = 0;
+const checkSelected = () => {
+  toBuyList.childNodes.forEach((e, i) => {
+    if (e.className === 'selected') {
+      indexOfSelection = i;
+    }
+  });
+  return indexOfSelection;
+};
+
+const moveUp = () => {
+  let index = checkSelected();
+  if (index > 0) {
+    toBuyList.childNodes[index].className = '';
+    toBuyList.childNodes[index - 1].className = 'selected';
+  }
+};
+
+const moveDown = () => {
+  let index = checkSelected();
+  if (index < toBuyList.childNodes.length - 1) {
+    toBuyList.childNodes[index].className = '';
+    toBuyList.childNodes[index + 1].className = 'selected';
+  }
+};
+
+const moveRight = () => {
+  let index = checkSelected();
+  let childWithIndex = toBuyList.childNodes[index];
+  toBuyList.childNodes[index].className = '';
+  doneList.appendChild(childWithIndex);
+  toBuyList.childNodes[0].className = 'selected';
+};
+
+const deleteItem = () => {
+  let index = checkSelected();
+  let childWithIndex = toBuyList.childNodes[index];
+  toBuyList.removeChild(childWithIndex);
+};
+
+buttonList.addEventListener('click', (e) => {
+  if (e.target == up) {
+    moveUp(1);
+  } else if (e.target == right) {
+    moveRight();
+  } else if (e.target == deleted) {
+    deleteItem();
+  } else if (e.target == down) {
+    moveDown();
   };
-})
+});
