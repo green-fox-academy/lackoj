@@ -15,4 +15,31 @@ const createDivs = (howMany) => {
   };
 };
 
+function isPrime(num) {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return num !== 1 && num !== 0;
+}
+
+const primeValidator = (div) => {
+  div.className = isPrime(Number(div.innerText)) ? "prime" : "not-prime";
+};
+
+const colorDivs = () => {
+  const divs = document.querySelectorAll('section div');
+  let divIndex = 0;
+
+  const timer = setInterval(() => {
+    if (divIndex < divs.length) {
+      primeValidator(divs[divIndex++]);
+    } else {
+      clearInterval(timer);
+    }
+  }, 100);
+};
+
 createDivs(100);
+colorDivs();
