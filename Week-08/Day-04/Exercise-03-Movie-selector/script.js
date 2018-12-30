@@ -26,5 +26,13 @@ const showSelected = () => {
   })
 }
 
-genreOptions.addEventListener("change", showSelected);
+const listSelected = () => {
+  const ul = document.querySelector("ul");
+  let li = document.createElement("li");
+  ul.innerHTML = "";
+  li.innerText = movieList[movieList.selectedIndex].innerText;
+  ul.appendChild(li);
+};
 
+genreOptions.addEventListener("change", showSelected);
+movieList.addEventListener("change", listSelected);
