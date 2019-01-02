@@ -35,6 +35,32 @@ app.get('/author', (req, res) => {
   });
 });
 
+app.post('/author', (req, res) => {
+  const { aut_id, aut_name, country, home_city } = req.body;
+  if (
+    aut_id === undefined || aut_id === '' ||
+    aut_name === undefined || aut_name === '' ||
+    country === undefined || country === '' ||
+    home_city === undefined || home_city === '') {
+    res.json({
+      message: 'All fields are required.'
+    })
+  } else {
+    const sql = 'INSERT INTO author (aut_id, aut_name, country, home_city) VALUES (?, ?, ?, ?);'
+    const newData = [aut_id, aut_name, country, home_city];
+    mySqlConnection.query(sql, newData, (error, data) => {
+      if (error) {
+        console.log(error.message);
+        res.status(500).json({ error: 'internal server issue' });
+        return;
+      }
+      res.json({
+        message: 'Sucessfully added'
+      });
+    });
+  }
+});
+
 app.delete('/author', (req, res) => {
   const { aut_id } = req.body;
   const sql = `DELETE FROM author WHERE aut_id = '${aut_id}';`
