@@ -68,6 +68,31 @@ tableDiv.addEventListener('click', (event) => {
   }));
   deletedXhr.onload = () => {
     console.log(JSON.parse(deletedXhr.responseText));
-  }
+  };
 });
+
+const form = document.querySelector('form');
+const { aut_id, aut_name, country, home_city } = form.elements;
+form.addEventListener('submit', (event) => {
+  console.log({
+    aut_id: aut_id.vaule,
+    aut_name: aut_name.value,
+    country: country.value,
+    home_city: home_city.value
+  });
+  event.preventDefault();
+  const postXhr = new XMLHttpRequest();
+  postXhr.open('POST', '/author');
+  postXhr.setRequestHeader('Content-Type', 'application/json');
+  postXhr.send(JSON.stringify({
+    aut_id: aut_id.value,
+    aut_name: aut_name.value,
+    country: country.value,
+    home_city: home_city.value
+  }));
+  postXhr.onload = () => {
+    console.log(JSON.parse(postXhr.responseText));
+  };
+});
+
 
