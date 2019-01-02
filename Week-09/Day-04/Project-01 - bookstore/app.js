@@ -35,4 +35,19 @@ app.get('/author', (req, res) => {
   });
 });
 
+app.delete('/author', (req, res) => {
+  const { aut_id } = req.body;
+  const sql = `DELETE FROM author WHERE aut_id = '${aut_id}';`
+  mySqlConnection.query(sql, (error, data) => {
+    if (error) {
+      console.log(error.message);
+      res.status(500).json({ error: 'internal server issue' });
+      return;
+    }
+    res.json({
+      message: 'Succesfully deleted'
+    });
+  });
+});
+
 app.listen(PORT, () => console.log(`Server is listening on: ${PORT}`));
