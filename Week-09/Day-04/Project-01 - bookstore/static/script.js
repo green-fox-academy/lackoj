@@ -58,3 +58,16 @@ const authorTable = (data) => {
 
   console.log(data);
 };
+
+tableDiv.addEventListener('click', (event) => {
+  const deletedXhr = new XMLHttpRequest();
+  deletedXhr.open('DELETE', '/author');
+  deletedXhr.setRequestHeader('Content-Type', 'application/json');
+  deletedXhr.send(JSON.stringify({
+    aut_id: event.target.id
+  }));
+  deletedXhr.onload = () => {
+    console.log(JSON.parse(deletedXhr.responseText));
+  }
+});
+
