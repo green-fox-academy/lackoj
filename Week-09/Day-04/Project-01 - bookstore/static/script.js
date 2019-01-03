@@ -71,7 +71,7 @@ tableDiv.addEventListener('click', (event) => {
   };
 });
 
-const form = document.querySelector('form');
+const form = document.querySelector('.post');
 const { aut_id, aut_name, country, home_city } = form.elements;
 form.addEventListener('submit', (event) => {
   console.log({
@@ -95,4 +95,16 @@ form.addEventListener('submit', (event) => {
   };
 });
 
-
+const deleteForm = document.querySelector('.delete');
+deleteForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const deleteXhr = new XMLHttpRequest();
+  deleteXhr.open('DELETE', '/author');
+  deleteXhr.setRequestHeader('Content-Type', 'application/json');
+  deleteXhr.send(JSON.stringify({
+    aut_id: deleteForm.elements.aut_id.value
+  }));
+  deleteXhr.onload = () => {
+    console.log(JSON.parse(deleteXhr.responseText));
+  };
+});

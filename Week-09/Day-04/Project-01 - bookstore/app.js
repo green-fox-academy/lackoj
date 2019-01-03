@@ -63,16 +63,31 @@ app.post('/author', (req, res) => {
 
 app.delete('/author', (req, res) => {
   const { aut_id } = req.body;
-  const sql = `DELETE FROM author WHERE aut_id = '${aut_id}';`
-  mySqlConnection.query(sql, (error, data) => {
+  const sqlCheck = `SELECT * FROM author;`;
+
+  mySqlConnection.query(sqlCheck, (error, rows) => {
     if (error) {
       console.log(error.message);
       res.status(500).json({ error: 'internal server issue' });
       return;
     }
-    res.json({
-      message: 'Succesfully deleted'
-    });
+    if (rows.find(data => data.aut_id === aut_id)) {
+      const sql = `DELETE FROM author WHERE aut_id = '${aut_id}';`
+      mySqlConnection.query(sql, (error, data) => {
+        if (error) {
+          console.log(error.message);
+          res.status(500).json({ error: 'internal server issue' });
+          return;
+        }
+        res.json({
+          message: 'Succesfully deleted'
+        });
+      });
+    } else {
+      res.json({
+        message: 'Wrong ID'
+      });
+    };
   });
 });
 
