@@ -72,7 +72,7 @@ app.delete('/author', (req, res) => {
       return;
     }
     if (rows.find(data => data.aut_id === aut_id)) {
-      const sql = `DELETE FROM author WHERE aut_id = '${aut_id}';`
+      const sql = `DELETE FROM author WHERE aut_id = '${aut_id}';`;
       mySqlConnection.query(sql, (error, data) => {
         if (error) {
           console.log(error.message);
