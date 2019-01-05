@@ -5,14 +5,15 @@
 //   - attach only two event listeners to the nav element
 //     - one for navigation
 //     - one for zooming
+"use strict";
 
-let buttonContainer = document.querySelector(".button-container");
-let imageInspector = document.querySelector(".img-inspector");
+const buttonContainer = document.querySelector(".button-container");
+const imageInspector = document.querySelector(".img-inspector");
 let imageSize = 100;
 let imagePosX = 0;
 let imagePosY = 0;
 
-let move = (e) => {
+const move = (e) => {
   if (e.target.dataset.direction === "left") {
     imagePosX -= 10;
   } else if (e.target.dataset.direction === "up") {
@@ -21,17 +22,17 @@ let move = (e) => {
     imagePosX += 10;
   } else if (e.target.dataset.direction === "down") {
     imagePosY += 10;
-  }
+  };
   imageInspector.style["background-position"] = `${imagePosX}px ${imagePosY}px`;
 };
 buttonContainer.addEventListener("click", move);
 
-let zoom = (e) => {
+const zoom = (e) => {
   if (e.target.dataset.direction === "in") {
     imageSize = imageSize * 1.2;
   } else if (e.target.dataset.direction === "out") {
     imageSize = imageSize * 0.8;
-  }
+  };
   imageInspector.style["background-size"] = `${imageSize}%`;
-}
+};
 buttonContainer.addEventListener("click", zoom);

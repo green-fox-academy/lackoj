@@ -8,7 +8,6 @@ const display = document.querySelector('.display');
 const button = document.querySelector('button');
 let count = 9;
 
-
 const updateRemainingSec = setInterval(() => {
   if (count > 0) {
     display.innerText = count;
@@ -17,12 +16,12 @@ const updateRemainingSec = setInterval(() => {
     clearInterval(updateRemainingSec);
     display.innerText = "Bomb exploded";
     button.setAttribute('disabled', true);
-  }
+  };
 }, 500);
 
 button.addEventListener('click', () => {
   if (count !== 0) {
     display.innerText = "Bomb defused";
     clearInterval(updateRemainingSec);
-  }
+  };
 });

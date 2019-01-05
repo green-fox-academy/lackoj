@@ -37,7 +37,7 @@ submit.addEventListener("click", (event) => {
     filmList.innerHTML = "";
     peopleList = response.results;
     peopleList.forEach((result) => {
-      let li = document.createElement("li");
+      const li = document.createElement("li");
       li.innerText = result.name;
       resultList.appendChild(li);
     });
@@ -49,11 +49,11 @@ resultList.addEventListener("click", (event) => {
     let [selectedPersonData] = peopleList.filter((person) => person.name === event.target.innerText);
     selectedPersonData.films.forEach(filmUrl => {
       sendHTTPRequest(filmUrl, (response) => {
-        let content = `${response.title} (${response.created})`;
-        let li = document.createElement("li");
+        const content = `${response.title} (${response.created})`;
+        const li = document.createElement("li");
         li.innerText = content;
         filmList.appendChild(li);
-      })
-    })
-  }
-})
+      });
+    });
+  };
+});

@@ -17,9 +17,9 @@ function infiniteScroll(scrollThreshold, callback) {
 
     if (currentPosition >= refreshPosition) {
       callback();
-    }
+    };
   });
-}
+};
 
 const randomNumber = Math.floor((Math.random() * 10) + 1);
 createDivs(randomNumber);
