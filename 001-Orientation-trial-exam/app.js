@@ -49,7 +49,7 @@ app.post('/api/links', (req, res) => {
     }
     if (data.find(e => e.alias === alias)) {
       res.status(400).json({
-        message: `The "${alias}" is already in use`
+        message: `Your is already in use`
       });
     } else {
       const secretCode = generateSecretCode();
@@ -67,12 +67,15 @@ app.post('/api/links', (req, res) => {
             res.status(500).json({ error: 'internal server issue' });
             return;
           };
-          res.json(newData);
+          const [result] = newData;
+          res.json(result);
         });
       });
     };
   });
 });
+
+
 
 //listen to PORT
 app.listen(PORT, () => {
