@@ -1,14 +1,15 @@
 'use strict';
 
+const mysql = require("mysql");
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
 const path = require("path");
 const PORT = 3000;
 
-//dotenv + express
+//dotenv + express + static
 require('dotenv').config();
 app.use(express.json());
+app.use('/static', express.static('static'));
 
 //send html file to Localhost
 app.get('/', (req, res) => {
@@ -59,13 +60,14 @@ app.post('/api/links', (req, res) => {
           res.status(500).json({ error: 'internal server issue' });
           return;
         };
-        mySqlConnection.query(sql, (error, newData) => {
+        const newSql = `SELECT * FROM urls WHERE id = ${insertData.insertId};`;
+        mySqlConnection.query(newSql, (error, newData) => {
           if (error) {
             console.log(error.message);
             res.status(500).json({ error: 'internal server issue' });
             return;
           };
-          res.json(data.find(e => e.id = insertData.insertId));
+          res.json(newData);
         });
       });
     };
