@@ -23,6 +23,10 @@ const mySqlConnection = mysql.createConnection({
   password: process.env.DB_PASSWORD
 });
 
+const generateSecretCode = () => {
+  return Math.floor(1000 + Math.random() * 9000);
+};
+
 // Check if connection works
 mySqlConnection.connect(function (err) {
   if (err) {
@@ -31,7 +35,42 @@ mySqlConnection.connect(function (err) {
   };
   console.log('Connection established');
 });
-mySqlConnection.end();
+
+app.post('/api/links', (req, res) => {
+  const sql = 'SELECT * FROM urls';
+  const { url, alias } = req.body;
+
+  mySqlConnection.query(sql, (error, data) => {
+    if (error) {
+      console.log(error.message);
+      res.status(500).json({ error: 'internal server issue' });
+      return;
+    }
+    if (data.find(e => e.alias === alias)) {
+      res.status(400).json({
+        message: `The "${alias}" is already in use`
+      });
+    } else {
+      const secretCode = generateSecretCode();
+      const sqlAdd = `INSERT INTO urls (url, alias, secretCode) VALUES ('${url}',"${alias}","${secretCode}");`;
+      mySqlConnection.query(sqlAdd, (error, insertData) => {
+        if (error) {
+          console.log(error.message);
+          res.status(500).json({ error: 'internal server issue' });
+          return;
+        };
+        mySqlConnection.query(sql, (error, newData) => {
+          if (error) {
+            console.log(error.message);
+            res.status(500).json({ error: 'internal server issue' });
+            return;
+          };
+          res.json(data.find(e => e.id = insertData.insertId));
+        });
+      });
+    };
+  });
+});
 
 //listen to PORT
 app.listen(PORT, () => {
