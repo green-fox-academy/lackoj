@@ -1,0 +1,5 @@
+.DS_Store
+package-lock.json
+node_modules
+practice_at_home
+tsconfig.json
