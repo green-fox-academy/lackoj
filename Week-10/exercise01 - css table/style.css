@@ -1,0 +1,61 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  background: rgb(0, 145, 255);
+  width: 600px;
+  height: 400px;
+  margin: 200px auto;
+  padding: 10px;
+}
+
+table {
+  width: 95%;
+  height: 95%;
+  margin: 10px auto;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px black;
+  font-family: 'Thasadith';
+}
+
+tbody{
+  color: #686E87;
+  font-size: 22px;
+}
+
+thead{
+  background-color: #1A1E25;
+  color: snow;
+  border-bottom: 3px solid #9DA7B0;
+  letter-spacing: 3px;
+  text-align: left;
+  font-size: 25px;
+}
+
+td{
+  background: rgb(208, 208, 208);
+}
+
+tr:nth-child(2n) > td{
+  background: rgb(238, 238, 238);
+}
+
+td, th {
+  border: 1px solid #999; 
+  padding: 10px;
+  /* text-align: center; */
+}
+
+th{
+  height: 50px;
+}
+
+td[data-currency]::before{
+  content: '$ ';
+}
