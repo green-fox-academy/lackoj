@@ -11,7 +11,7 @@ app.use(express.json());
 const conn = mysql.createConnection({
   user: 'root',
   password: 'password',
-  database: 'database', //check
+  database: 'quiz', //check
   port: 3306
 });
 
@@ -23,7 +23,7 @@ conn.connect(function (err) {
   console.log('Connection established');
 });
 
-app.use('/static', express.static('static'));
+app.use('/static', express.static('static')); //maybe another one will be needed? 
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
