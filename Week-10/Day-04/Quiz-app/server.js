@@ -29,20 +29,20 @@ app.get('/main', (req, res) => {
   res.sendFile(path.join(__dirname, 'main.html'));
 });
 
-app.get(`/game`, (req, res) => {
+app.get(`/api/game`, (req, res) => {
   const mySql = `SELECT * FROM questions ORDER BY RAND() LIMIT 1;`;
   conn.query(mySql, (error, data) => {
     if (error) {
       console.log(error.message);
-      res.status(500).json({ error: 'internal server issue' });
+      res.status(500).json({ error: 'internal server error' });
       return;
     }
     const [{ id, question }] = data;
-    const sqlAnw = `SELECT * FROM answers WHERE question_id = ${id};`;
-    conn.query(sqlAnw, (error, aswerOpotions) => {
+    const sqlAnswers = `SELECT * FROM answers WHERE question_id = ${id};`;
+    conn.query(sqlAnswers, (error, aswerOpotions) => {
       if (error) {
         console.log(error.message);
-        res.status(500).json({ error: 'internal server issue' });
+        res.status(500).json({ error: 'internal server error' });
         return;
       }
       res.json({
@@ -58,19 +58,17 @@ app.get('/questions', (req, res) => {
   res.sendFile(path.join(__dirname, 'questions.html'));
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.get(`/api/questions`, (req, res) => {
+  const sqlAll = `SELECT * FROM questions;`;
+  conn.query(sqlAll, (error, data) => {
+    if (error) {
+      console.log(error.message);
+      res.status(500).json({ error: 'internal server error' });
+      return;
+    }
+    res.json(data);
+  });
+});
 
 
 
