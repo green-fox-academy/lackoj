@@ -25,8 +25,33 @@ conn.connect(function (err) {
 
 app.use('/static', express.static('static')); //maybe another one will be needed? 
 
-app.get('/', (req, res) => {
+app.get('/main', (req, res) => {
   res.sendFile(path.join(__dirname, 'main.html'));
+});
+
+app.get(`/game`, (req, res) => {
+  const mySql = `SELECT * FROM questions ORDER BY RAND() LIMIT 1;`;
+  conn.query(mySql, (error, data) => {
+    if (error) {
+      console.log(error.message);
+      res.status(500).json({ error: 'internal server issue' });
+      return;
+    }
+    const [{ id, question }] = data;
+    const sqlAnw = `SELECT * FROM answers WHERE question_id = ${id};`;
+    conn.query(sqlAnw, (error, aswerOpotions) => {
+      if (error) {
+        console.log(error.message);
+        res.status(500).json({ error: 'internal server issue' });
+        return;
+      }
+      res.json({
+        id: id,
+        question: question,
+        asnwers: aswerOpotions
+      });
+    });
+  });
 });
 
 app.get('/questions', (req, res) => {
