@@ -11,7 +11,7 @@ app.use(express.json());
 const conn = mysql.createConnection({
   user: 'root',
   password: 'password',
-  database: 'quiz', //check
+  database: 'quiz',
   port: 3306
 });
 
@@ -26,8 +26,28 @@ conn.connect(function (err) {
 app.use('/static', express.static('static')); //maybe another one will be needed? 
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'main.html'));
 });
+
+app.get('/questions', (req, res) => {
+  res.sendFile(path.join(__dirname, 'questions.html'));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`App is listening on port ${PORT}`);
