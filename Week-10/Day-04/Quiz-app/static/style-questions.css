@@ -1,0 +1,33 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: rgb(224, 224, 224);
+  text-align: center;
+}
+
+.quesiotns-conatiner, .answers-container{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: whitesmoke;
+  width: 600px;
+  border: 1px solid black;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  align-content: center;
+  border-radius: 15px;
+}
+
+a{
+  font-size: 15px;
+  text-decoration:none; 
+}
+
+
+input[type=text]{
+  height: 30px;
+  width: 400px;
+  margin: 5px auto;
+  border: 1px solid darkgray;
+
+}

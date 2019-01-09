@@ -1,0 +1,51 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: rgb(224, 224, 224);
+
+}
+
+.main-div{
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 200px;
+  width: 400px;
+  margin: 200px auto;
+  padding: 20px;
+  text-align: center;
+  align-content: center;
+}
+.questions{
+  background: whitesmoke;;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  margin: 0 auto;
+ }
+
+ .score{
+  width: 460px;
+  margin: 0 auto;
+ }
+
+button{
+  background-color: #3498db;
+  height: 40px;
+  min-width: 350px;
+  margin: 5px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button:hover{
+  background-color: #4CAF50;
+}
+
+.a{
+  width: 460px;
+}
+
+a{
+  font-size: 10px;
+  text-decoration:none; 
+}
