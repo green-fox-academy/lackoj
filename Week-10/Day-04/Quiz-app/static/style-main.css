@@ -15,7 +15,7 @@ body{
   text-align: center;
   align-content: center;
 }
-.questions{
+.questions-container{
   background: whitesmoke;;
   padding: 30px;
   border-radius: 15px;
@@ -37,8 +37,12 @@ button{
   font-size: 16px;
 }
 
-button:hover{
+.green{
   background-color: #4CAF50;
+}
+
+.red{
+  background-color: red;
 }
 
 .a{
