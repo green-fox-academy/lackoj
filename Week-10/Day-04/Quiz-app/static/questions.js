@@ -27,3 +27,18 @@ const showQestions = (data) => {
 };
 
 sendHTTPRequest('/api/questions', 'GET', showQestions);
+
+questionContainer.addEventListener('click', (event) => {
+  const { id } = event.target.dataset;
+  if (event.target.type === "submit") {
+    const deleteXHR = new XMLHttpRequest();
+    deleteXHR.open('DELETE', `/questions/${id}`);
+    deleteXHR.send();
+    deleteXHR.onload = () => {
+      if (deleteXHR.status === 200) {
+        console.log(JSON.parse(deleteXHR.responseText));
+      }
+    };
+  }
+});
+
