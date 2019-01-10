@@ -71,29 +71,49 @@ app.get(`/api/questions`, (req, res) => {
 });
 
 app.post('/questions', (req, res) => {
-  const { answerOne, answerTwo, answerThree, answerFour } = req.body;
-  const newAnswers = [answerOne, answerTwo, answerThree, answerFour];
-  const question = ''; //update later & insert into table
-  const id = 99; //update later to match with question_id
-  const isCorrect = 0; //update later, check radio btn-s
+  const { question, answers, idnexOfTrue } = req.body;
+  let isCorrect = 0;
 
-  if (!answerOne || !answerTwo || !answerThree || !answerFour) {
+  if (!question || !answers) { //set required for Radio bttn-s
     res.json({
       message: 'All fields are required.'
     });
+    return;
   } else {
-    newAnswers.forEach(answer => {
-      const sql = `INSERT INTO answers (question_id, answer, is_correct) VALUES ('${id}','${answer}', '${isCorrect}');`
-      conn.query(sql, (error, data) => {
+    const sqlAddQuestion = `INSERT INTO questions (question) VALUES ('${question}');`
+    conn.query(sqlAddQuestion, (error, data) => {
+      if (error) {
+        console.log(error.message);
+        res.status(501).json({ error: 'internal server error1' });
+        return;
+      }
+      const sqlInsetrtedId = `SELECT * FROM questions WHERE question = '${question}';`;
+      conn.query(sqlInsetrtedId, (error, insertedData) => {
         if (error) {
           console.log(error.message);
-          res.status(500).json({ error: 'internal server error' });
+          res.status(502).json({ error: 'internal server error2' });
           return;
         }
+        const newID = insertedData[0].id;
+        answers.forEach((answer, index) => {
+          if (index === idnexOfTrue) {
+            isCorrect = 1;
+          } else {
+            isCorrect = 0;
+          }
+          const sqlAddAnswers = `INSERT INTO answers (question_id, answer, is_correct) VALUES ('${newID}','${answer}', '${isCorrect}');`
+          conn.query(sqlAddAnswers, (error, data) => {
+            if (error) {
+              console.log(error.message);
+              res.status(503).json({ error: 'internal server error3' });
+              return;
+            }
+          });
+        });
+        res.json({
+          message: "Sucessfully added all"
+        });
       });
-    });
-    res.json({
-      message: 'Sucessfully added'
     });
   }
 });
