@@ -48,7 +48,7 @@ app.get(`/api/game`, (req, res) => {
       res.json({
         id: id,
         question: question,
-        asnwers: aswerOpotions
+        answers: aswerOpotions
       });
     });
   });
@@ -70,7 +70,33 @@ app.get(`/api/questions`, (req, res) => {
   });
 });
 
+app.post('/questions', (req, res) => {
+  const { answerOne, answerTwo, answerThree, answerFour } = req.body;
+  const newAnswers = [answerOne, answerTwo, answerThree, answerFour];
+  const question = ''; //update later & insert into table
+  const id = 99; //update later to match with question_id
+  const isCorrect = 0; //update later, check radio btn-s
 
+  if (!answerOne || !answerTwo || !answerThree || !answerFour) {
+    res.json({
+      message: 'All fields are required.'
+    });
+  } else {
+    newAnswers.forEach(answer => {
+      const sql = `INSERT INTO answers (question_id, answer, is_correct) VALUES ('${id}','${answer}', '${isCorrect}');`
+      conn.query(sql, (error, data) => {
+        if (error) {
+          console.log(error.message);
+          res.status(500).json({ error: 'internal server error' });
+          return;
+        }
+      });
+    });
+    res.json({
+      message: 'Sucessfully added'
+    });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`App is listening on port ${PORT}`);
