@@ -101,3 +101,27 @@ app.post('/questions', (req, res) => {
 app.listen(PORT, () => {
   console.log(`App is listening on port ${PORT}`);
 });
+
+app.delete('/questions/:id', (req, res) => {
+  const { id } = req.params;
+  const sqlDeleteQuestion = `DELETE FROM questions WHERE id = '${id}';`;
+  const sqlDeleteAnswers = `DELETE FROM answers WHERE question_id = '${id}';`;
+
+  conn.query(sqlDeleteQuestion, (error, data) => {
+    if (error) {
+      console.log(error.message);
+      res.status(500).json({ error: 'internal server error' });
+      return;
+    }
+    conn.query(sqlDeleteAnswers, (error, data) => {
+      if (error) {
+        console.log(error.message);
+        res.status(500).json({ error: 'internal server error' });
+        return;
+      }
+      res.json({
+        message: `Question & related answers have been deleted.`
+      });
+    });
+  });
+});
