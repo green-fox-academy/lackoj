@@ -2,6 +2,8 @@
 
 const questionContainer = document.querySelector(".questions-container");
 const answersContainer = document.querySelector(".answers-container");
+const submitBtn = document.querySelector('input[type="submit"]');
+const form = document.querySelector("form");
 
 const sendHTTPRequest = (url, method, callback) => {
   const xhr = new XMLHttpRequest();
@@ -42,3 +44,28 @@ questionContainer.addEventListener('click', (event) => {
   }
 });
 
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const { question, answerTwo, answerThree, answerFour } = form.elements;
+  let idnexOfTrue = 0;
+  form.elements.radio.forEach((element, index) => {
+    if (element.checked) {
+      idnexOfTrue = index;
+    }
+  });
+
+  const addXhr = new XMLHttpRequest();
+  addXhr.open('POST', `/questions`);
+  addXhr.setRequestHeader('Content-Type', 'application/json');
+  addXhr.send(JSON.stringify({
+    question: question.value,
+    answers: [answerOne.value, answerTwo.value, answerThree.value, answerFour.value],
+    idnexOfTrue: idnexOfTrue
+  }));
+
+  addXhr.onload = () => {
+    if (addXhr.status === 200) {
+      console.log(JSON.parse(addXhr.responseText));
+    }
+  };
+});
